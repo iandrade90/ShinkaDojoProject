@@ -15,3 +15,41 @@ class Acerca(models.Model):
   titulo_programa_dos = models.CharField(max_length=30)
   contenido = models.CharField(max_length=200)
   inicio = models.ForeignKey(Inicio, related_name='acerca', on_delete=models.SET_NULL, null=True)
+
+  def __str__(self):
+      return 'Titulo de la sesion de programas'
+
+
+class Programa(models.Model):
+    titulo = models.CharField(max_length=100)
+    contenido = models.CharField(max_length=100)
+
+    def __str__(self):
+        return 'Programa ' + self.titulo
+
+class Contacto(models.Model):
+    titulo_uno = models.CharField(max_length=30)
+    enfasis_uno = models.CharField(max_length=30)
+    titulo_dos = models.CharField(max_length=30)
+    enfasis_dos = models.CharField(max_length=30)
+    contenido = models.CharField(max_length=200)
+
+    def __str__(self):
+        return 'Slogan de contacto'
+
+
+class PresentacionEstilos(models.Model):
+    titulo = models.CharField(max_length=30)
+    enfasis = models.CharField(max_length=30)
+    contenido = models.CharField(max_length=200)
+
+    def __str__(self):
+        return 'Nuestros Estilos'
+
+class Estilo(models.Model):
+    titulo = models.CharField(max_length=30)
+    resumen = models.CharField(max_length=200)
+    contenido = models.CharField(max_length=2000)
+
+    def __str__(self):
+        return 'Estilo ' + self.titulo

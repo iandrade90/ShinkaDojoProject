@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>Training Studio - Free CSS Template</title>
+    <title>Shinka Dojo</title>
 <!--
 
 TemplateMo 548 Training Studio
@@ -61,7 +61,6 @@ https://templatemo.com/tm-548-training-studio
                             <li class="scroll-to-section"><a href="#our-classes">Clases</a></li>
                             <li class="scroll-to-section"><a href="#schedule">Horarios</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contacto</a></li> 
-                            <!--<li class="main-button"><a href="#">Sign Up</a></li>-->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -76,9 +75,7 @@ https://templatemo.com/tm-548-training-studio
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
-        <video autoplay muted loop id="bg-video">
-            <source src="{% static 'images/gym-video.mp4' %}" type="video/mp4" />
-        </video>
+        <img id="bg-video" src="{% static 'images/banneprincipal.jpeg' %}">
 
         <div class="video-overlay header-text">
             <div class="caption">
@@ -107,6 +104,7 @@ https://templatemo.com/tm-548-training-studio
                       {% endfor %}
                     </div>
                 </div>
+		{% for clase in clases %}
                 <div class="col-lg-6">
                     <ul class="features-items">
                         <li class="feature-item">
@@ -114,67 +112,13 @@ https://templatemo.com/tm-548-training-studio
                                 <img src="{% static 'images/features-first-icon.png' %}" alt="First One">
                             </div>
                             <div class="right-content">
-                                <h4>Defensa Personal Urbana</h4>
-                                <p>Please do not re-distribute this template ZIP file on any template collection website. This is not allowed.</p>
-                                <a href="#" class="text-button">Discover More</a>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="{% static 'images/features-first-icon.png' %}" alt="second one">
-                            </div>
-                            <div class="right-content">
-                                <h4>Defensa Personal Táctica y Operativa</h4>
-                                <p>If you wish to support TemplateMo website via PayPal, please feel free to contact us. We appreciate it a lot.</p>
-                                <a href="#" class="text-button">Discover More</a>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="{% static 'images/features-first-icon.png' %}" alt="third gym training">
-                            </div>
-                            <div class="right-content">
-                                <h4>Artes Marciales</h4>
-                                <p>Credit goes to <a rel="nofollow" href="#" target="_blank">Pexels website</a> for images and video background used in this HTML template.</p>
-                                <a href="#" class="text-button">Discover More</a>
+				<h4>{{ clase.titulo }}</h4>
+				<p>{{ clase.contenido }}</p>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-6">
-                    <ul class="features-items">
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="{% static 'images/features-first-icon.png' %}" alt="fourth muscle">
-                            </div>
-                            <div class="right-content">
-                                <h4>Artes Marciales Kids</h4>
-                                <p>You may want to browse through <a rel="nofollow" href="#" target="_parent">Digital Marketing</a> or <a href="#">Corporate</a> HTML CSS templates on our website.</p>
-                                <a href="#" class="text-button">Discover More</a>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="{% static 'images/features-first-icon.png' %}" alt="training fifth">
-                            </div>
-                            <div class="right-content">
-                                <h4>Defensa Personal para Ellas</h4>
-                                <p>This template is built on Bootstrap v4.3.1 framework. It is easy to adapt the columns and sections.</p>
-                                <a href="#" class="text-button">Discover More</a>
-                            </div>
-                        </li>
-                        <!--<li class="feature-item">
-                            <div class="left-icon">
-                                <img src="assets/images/features-first-icon.png" alt="gym training">
-                            </div>
-                            <div class="right-content">
-                                <h4>Body Building Course</h4>
-                                <p>Suspendisse fringilla et nisi et mattis. Curabitur sed finibus nisi. Integer nibh sapien, vehicula et auctor.</p>
-                                <a href="#" class="text-button">Discover More</a>
-                            </div>
-                        </li>-->
-                    </ul>
-                </div>
+		{% endfor %}
             </div>
         </div>
     </section>
@@ -186,8 +130,10 @@ https://templatemo.com/tm-548-training-studio
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="cta-content">
-                        <h2>No lo <em>Pienses</em>, comienza <em>hoy</em>!</h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus odio augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
+		      {% for slogan in slogans %}
+			<h2>{{ slogan.titulo_uno }} <em>{{ slogan.enfasis_uno }}</em>, {{ slogan.titulo_dos }} <em>{{ slogan.enfasis_dos }}</em>!</h2>
+			<p>{{ slogan.contenido }}</p>
+		      {% endfor %}
                         <div class="main-button scroll-to-section">
                             <a href="#our-classes">Contáctanos</a>
                         </div>
@@ -204,56 +150,35 @@ https://templatemo.com/tm-548-training-studio
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
-                        <h2>Nuestros <em>Estilos</em></h2>
+		      {% for presentacion in presentaciones %}
+		      <h2>{{ presentacion.titulo }} <em>{{ presentacion.enfasis }}</em></h2>
                         <img src="{% static 'images/line-dec.png' %}" alt="">
-                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+			<p>{{ presentacion.contenido }}</p>
+		      {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="row" id="tabs">
               <div class="col-lg-4">
                 <ul>
-                  <li><a href='#tabs-1'><img src="{% static 'images/tabs-first-icon.png' %}" alt="">First Training Class</a></li>
-                  <li><a href='#tabs-2'><img src="{% static 'images/tabs-first-icon.png' %}" alt="">Second Training Class</a></a></li>
-                  <li><a href='#tabs-3'><img src="{% static 'images/tabs-first-icon.png' %}" alt="">Third Training Class</a></a></li>
-                  <li><a href='#tabs-4'><img src="{% static 'images/tabs-first-icon.png' %}" alt="">Fourth Training Class</a></a></li>
+		  {% for estilo in estilos %}
+		  <li><a href='#{{ estilo.id }}'><img src="{% static 'images/tabs-first-icon.png' %}" alt="">{{ estilo.titulo }}</a></li>
+		  {% endfor %}
                   <div class="main-rounded-button"><a href="#">View All Schedules</a></div>
                 </ul>
               </div>
               <div class="col-lg-8">
                 <section class='tabs-content'>
-                  <article id='tabs-1'>
+		  {% for estilo in estilos %}
+		  <article id='{{ estilo.id }}'>
                     <img src="{% static 'images/training-image-01.jpg' %}" alt="First Class">
-                    <h4>First Training Class</h4>
-                    <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
+		    <h4>{{ estilo.titulo }}</h4>
+		    <p>{{ estilo.resumen }}</p>
                     <div class="main-button">
                         <a href="#">View Schedule</a>
                     </div>
                   </article>
-                  <article id='tabs-2'>
-                    <img src="{% static 'images/training-image-02.jpg' %}" alt="Second Training">
-                    <h4>Second Training Class</h4>
-                    <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    <div class="main-button">
-                        <a href="#">View Schedule</a>
-                    </div>
-                  </article>
-                  <article id='tabs-3'>
-                    <img src="{% static 'images/training-image-03.jpg' %}" alt="Third Class">
-                    <h4>Third Training Class</h4>
-                    <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
-                    <div class="main-button">
-                        <a href="#">View Schedule</a>
-                    </div>
-                  </article>
-                  <article id='tabs-4'>
-                    <img src="{% static 'images/training-image-04.jpg' %}" alt="Fourth Training">
-                    <h4>Fourth Training Class</h4>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean ultrices elementum odio ac tempus. Etiam eleifend orci lectus, eget venenatis ipsum commodo et.</p>
-                    <div class="main-button">
-                        <a href="#">View Schedule</a>
-                    </div>
-                  </article>
+		  {% endfor %}
                 </section>
               </div>
             </div>
@@ -435,11 +360,9 @@ https://templatemo.com/tm-548-training-studio
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; 2020 Training Studio
+                    <p>Derechos &copy; 2021 Shinka Dojo
                     
-                    - Designed by <a rel="nofollow" href="#" class="tm-text-link" target="_parent">TemplateMo</a></p>
-                    
-                    <!-- You shall support us a little via PayPal to info@templatemo.com -->
+                    - Disenada por <a rel="nofollow" href="#" class="tm-text-link" target="_parent">Ivan Andrade</a></p>
                     
                 </div>
             </div>
