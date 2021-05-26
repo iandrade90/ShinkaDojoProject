@@ -57,8 +57,8 @@ https://templatemo.com/tm-548-training-studio
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Inicio</a></li>
-                            <li class="scroll-to-section"><a href="#features">Acerca de</a></li>
-                            <li class="scroll-to-section"><a href="#our-classes">Clases</a></li>
+                            <li class="scroll-to-section"><a href="#features">Programas</a></li>
+                            <li class="scroll-to-section"><a href="#our-classes">Estilos</a></li>
                             <li class="scroll-to-section"><a href="#schedule">Horarios</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contacto</a></li> 
                         </ul>        
@@ -191,9 +191,11 @@ https://templatemo.com/tm-548-training-studio
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading dark-bg">
-                        <h2>Horario de <em>Clases</em></h2>
+		      {% for horario in horarios %}
+			<h2>{{ horario.titulo }} <em>{{ horario.enfasis }}</em></h2>
                         <img src="{% static 'images/line-dec.png' %}" alt="">
-                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+			<p>{{ horario.contenido }}</p>
+		      {% endfor %}
                     </div>
                 </div>
             </div>
@@ -242,67 +244,33 @@ https://templatemo.com/tm-548-training-studio
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
-                        <h2>Expert <em>Trainers</em></h2>
+		      {% for experto in expertos %}
+			<h2>{{ experto.titulo }} <em>{{ experto.enfasis }}</em></h2>
                         <img src="{% static 'images/line-dec.png' %}" alt="">
-                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+			<p>{{ experto.contenido }}</p>
+		      {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="row">
+	      {% for maestro in maestros %}
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
                             <img src="{% static 'images/first-trainer.jpg' %}" alt="">
                         </div>
                         <div class="down-content">
-                            <span>Strength Trainer</span>
-                            <h4>Bret D. Bowers</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+			    <span>{{ maestro.disciplina }}</span>
+			    <h4>{{ maestro.nombre }}</h4>
+			    <p>{{ maestro.contenido }}</p>
                             <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+				<li><a href="https://www.facebook.com/{{ maestro.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/{{ maestro.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{% static 'images/second-trainer.jpg' %}" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>Muscle Trainer</span>
-                            <h4>Hector T. Daigl</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{% static 'images/third-trainer.jpg' %}" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>Power Trainer</span>
-                            <h4>Paul D. Newman</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+	      {% endfor %}
             </div>
         </div>
     </section>
@@ -319,31 +287,32 @@ https://templatemo.com/tm-548-training-studio
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="contact-form">
-                        <form id="contact" action="" method="post">
+		      <form id="contact" action="" method="POST">
+			{% csrf_token %}
                           <div class="row">
                             <div class="col-md-6 col-sm-12">
                               <fieldset>
-                                <input name="name" type="text" id="name" placeholder="Your Name*" required="">
+                                <input name="name" type="text" id="name" placeholder="Nombre*" required="">
                               </fieldset>
                             </div>
                             <div class="col-md-6 col-sm-12">
                               <fieldset>
-                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="">
+                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Email*" required="">
                               </fieldset>
                             </div>
                             <div class="col-md-12 col-sm-12">
                               <fieldset>
-                                <input name="subject" type="text" id="subject" placeholder="Subject">
+                                <input name="subject" type="text" id="subject" placeholder="Asunto">
                               </fieldset>
                             </div>
                             <div class="col-lg-12">
                               <fieldset>
-                                <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
+                                <textarea name="message" rows="6" id="message" placeholder="Mensaje*" required=""></textarea>
                               </fieldset>
                             </div>
                             <div class="col-lg-12">
                               <fieldset>
-                                <button type="submit" id="form-submit" class="main-button">Send Message</button>
+                                <button type="submit" id="form-submit" class="main-button">Enviar Mensaje</button>
                               </fieldset>
                             </div>
                           </div>

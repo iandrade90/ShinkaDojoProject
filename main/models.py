@@ -53,3 +53,30 @@ class Estilo(models.Model):
 
     def __str__(self):
         return 'Estilo ' + self.titulo
+
+
+class Horario(models.Model):
+    titulo = models.CharField(max_length=30)
+    enfasis = models.CharField(max_length=30)
+    contenido = models.CharField(max_length=100)
+
+    def __str__(self):
+        return 'Horario de clases'
+
+class Experto(models.Model):
+    titulo = models.CharField(max_length=30)
+    enfasis = models.CharField(max_length=30)
+    contenido = models.CharField(max_length=200)
+
+    def __str__(self):
+        return 'Titulo de Expertos'
+
+class Maestro(models.Model):
+    disciplina = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100)
+    contenido = models.CharField(max_length=250)
+    instagram = models.CharField(max_length=100, blank=True)
+    facebook = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.nombre

@@ -5,7 +5,10 @@ from .models import (
         Programa,
         Contacto,
         PresentacionEstilos,
-        Estilo
+        Estilo,
+        Horario,
+        Experto,
+        Maestro
         )
 
 admin.site.register(Inicio)
@@ -14,3 +17,6 @@ admin.site.register(Programa)
 admin.site.register(Contacto)
 admin.site.register(PresentacionEstilos)
 admin.site.register(Estilo)
+admin.site.register(Horario)
+admin.site.register(Experto)
+admin.site.register(Maestro)

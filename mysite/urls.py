@@ -17,12 +17,12 @@ Including another URLconf
 #from django.conf import settings 
 #from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-from main.views import InicioLista
+from django.urls import path, include
+from main.views import PageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', InicioLista.as_view()),
+    path('', PageView.as_view()),
 ]
 
 #if settings.DEBUG:
