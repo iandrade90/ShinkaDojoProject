@@ -74,6 +74,7 @@ class Experto(models.Model):
 class Maestro(models.Model):
     disciplina = models.CharField(max_length=100)
     nombre = models.CharField(max_length=100)
+    imagen = models.ImageField(null=True, upload_to='images')
     contenido = models.CharField(max_length=250)
     instagram = models.CharField(max_length=100, blank=True)
     facebook = models.CharField(max_length=100, blank=True)

@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render
 from .models import (
         Inicio,
@@ -58,6 +59,6 @@ class PageView(View):
             Mensaje: {}
             Email: {}
             '''.format(data['nombre'], data['mensaje'], data['email'])
-            send_mail(data['asunto'], mensaje, '', ['contactoshinkadojo@gmail.com'])
+            send_mail(data['asunto'], mensaje, '', (os.environ['EMAIL_USER'],))
 
         return render(request, self.template_name, self.contexto)

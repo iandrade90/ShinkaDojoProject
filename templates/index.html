@@ -109,7 +109,7 @@ https://templatemo.com/tm-548-training-studio
                     <ul class="features-items">
                         <li class="feature-item">
                             <div class="left-icon">
-                                <img src="{% static 'images/features-first-icon.png' %}" alt="First One">
+                                <img src="{% static 'images/puno.png' %}" alt="First One">
                             </div>
                             <div class="right-content">
 				<h4>{{ clase.titulo }}</h4>
@@ -162,7 +162,7 @@ https://templatemo.com/tm-548-training-studio
               <div class="col-lg-4">
                 <ul>
 		  {% for estilo in estilos %}
-		  <li><a href='#{{ estilo.id }}'><img src="{% static 'images/tabs-first-icon.png' %}" alt="">{{ estilo.titulo }}</a></li>
+		  <li><a href='#{{ estilo.id }}'><img src="{% static 'images/puno.png' %}" alt="">{{ estilo.titulo }}</a></li>
 		  {% endfor %}
                   <div class="main-rounded-button"><a href="#">View All Schedules</a></div>
                 </ul>
@@ -171,7 +171,7 @@ https://templatemo.com/tm-548-training-studio
                 <section class='tabs-content'>
 		  {% for estilo in estilos %}
 		  <article id='{{ estilo.id }}'>
-                    <img src="{% static 'images/training-image-01.jpg' %}" alt="First Class">
+                    <img src="{% static 'images/banneradd.jpeg' %}" alt="First Class">
 		    <h4>{{ estilo.titulo }}</h4>
 		    <p>{{ estilo.resumen }}</p>
                     <div class="main-button">
@@ -257,7 +257,7 @@ https://templatemo.com/tm-548-training-studio
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="{% static 'images/first-trainer.jpg' %}" alt="">
+			  <img src="{{ maestro.imagen.url }}" alt="">
                         </div>
                         <div class="down-content">
 			    <span>{{ maestro.disciplina }}</span>
